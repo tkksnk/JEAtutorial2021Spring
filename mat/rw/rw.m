@@ -8,7 +8,7 @@ phi = 10.0;
 phi = 100.0;
 phi = 200.0;
 phi = 5.0;
-phi = 2.5;
+% phi = 2.5;
 rstar = (1/bet-1)*100;
 zeta = 1.0;
 
@@ -60,7 +60,7 @@ mmin = -6.0;
 mmin = -40.0;
 mmin = -60.0;
 mmin = -4.0;
-mmin = -2.0;
+% mmin = -2.0;
 mgrid = linspace(mmin,mmax,N)';
 
 Gs = [sH; sL];
@@ -118,7 +118,7 @@ while(diff>crit)
             pmat1(im,is) = p0;
             imat1(im,is) = i0; %i0;
             mmat1(im,is) = m0;
-            nmat1(im,is) = is0; %i0;
+            nmat1(im,is) = is0+mpast; %i0;
             
         end
 

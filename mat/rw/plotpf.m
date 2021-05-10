@@ -56,7 +56,7 @@ for t=1:T
     pvec(t+1) = p0;
     ivec(t+1) = i0;
     mvec(t+1) = m0;
-    nvec(t+1) = is0;
+    nvec(t+1) = is0+mpast;
 
 end
 
@@ -82,7 +82,7 @@ plot(mgrid,mgrid,'k:');
 plot(mvec(T1:end-1),mvec(T1+1:end),'m*');
 xlim([mgrid(1) mgrid(end)]);
 ylim([mgrid(1) mgrid(end)]);
-ylabel('s_{t}=s_{H}');
+ylabel('s_{H}');
 title('FG term, m_{t}','FontWeight','Normal')
 subplot(234);
 plot(mgrid,mmat0(:,2),'b-','LineWidth',2.0);
@@ -93,29 +93,33 @@ xlim([mgrid(1) mgrid(end)]);
 ylim_ = ylim;
 plot([mgrid(id) mgrid(id)],[ylim_(1) ylim_(2)],'r-');
 xlabel('m_{t-1}');
-ylabel('s_{t}=s_{L}');
+ylabel('s_{L}');
 
 subplot(232);
 plot(mgrid,nmat0(:,1),'b-','LineWidth',2.0);
 xlim([mgrid(1) mgrid(end)]);
+ylim([-4 1]);
 ylim_ = ylim;
 hold on;
 plot(mvec(T1:end-1),nvec(T1+1:end),'m*');
 plot([mgrid(id) mgrid(id)],[ylim_(1) ylim_(2)],'r-');
-title('Nortional rate, R^{*}_{t}','FontWeight','Normal')
+plot([mgrid(1) mgrid(end)],[0,0],'k-');
+title('Nortional rate, R^{*}_{t}-m_{t-1}','FontWeight','Normal')
 subplot(235);
 plot(mgrid,nmat0(:,2),'b-','LineWidth',2.0);
 xlim([mgrid(1) mgrid(end)]);
+ylim([-4 1]);
 ylim_ = ylim;
 hold on;
 plot([0;mvec(1:T1-1)],nvec(1:T1),'m*');
 plot([mgrid(id) mgrid(id)],[ylim_(1) ylim_(2)],'r-');
-plot([mgrid(1) mgrid(end)],[0,0],'g-');
+plot([mgrid(1) mgrid(end)],[0,0],'k-');
 xlabel('m_{t-1}')
 
 subplot(233);
 plot(mgrid,imat0(:,1),'b-','LineWidth',2.0);
 xlim([mgrid(1) mgrid(end)]);
+ylim([0 1]);
 ylim_ = ylim;
 hold on;
 plot(mvec(T1:end-1),ivec(T1+1:end),'m*');
@@ -124,11 +128,12 @@ title('Nominal rate, R_{t}','FontWeight','Normal')
 subplot(236);
 plot(mgrid,imat0(:,2),'b-','LineWidth',2.0);
 xlim([mgrid(1) mgrid(end)]);
+ylim([0 1]);
 ylim_ = ylim;
 hold on;
 plot([0;mvec(1:T1-1)],ivec(1:T1),'m*');
 plot([mgrid(id) mgrid(id)],[ylim_(1) ylim_(2)],'r-');
-plot([mgrid(1) mgrid(end)],[0,0],'g-');
+% plot([mgrid(1) mgrid(end)],[0,0],'k-');
 xlabel('m_{t-1}')
 
 Tshow = 20;
@@ -147,10 +152,10 @@ xlim([1 Tshow]);
 title('Policy rate');
 
 save rwirf2.5.mat yvec pvec ivec;
-% subplot(234);
-% plot([1:Tshow],mvec(1:Tshow),'o-');
-% xlim([1 Tshow]);
-% title('FG term');
+subplot(234);
+plot([1:Tshow],mvec(1:Tshow),'o-');
+xlim([1 Tshow]);
+title('FG term');
 % subplot(235);
 % plot([1:Tshow],nvec(1:Tshow),'o-');
 % hold on;

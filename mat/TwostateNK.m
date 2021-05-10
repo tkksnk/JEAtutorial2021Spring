@@ -40,7 +40,7 @@ toc;
 xvec = [0 1];
 
 figure;
-subplot(231);
+subplot(233);
 plot(xvec,rvec0*4,'k*-','LineWidth',3.0);
 hold on;
 plot(xvec,rvec1*4,'k*--','LineWidth',3.0);
@@ -50,7 +50,7 @@ xticks([0 1]);
 xticklabels({'H','L'});
 set(gca,'Fontsize',12);
 
-subplot(232);
+subplot(231);
 plot(xvec,yvec0,'k*-','LineWidth',3.0);
 hold on;
 plot(xvec,yvec1,'k*--','LineWidth',3.0);
@@ -60,7 +60,7 @@ xticks([0 1]);
 xticklabels({'H','L'});
 set(gca,'Fontsize',12);
 
-subplot(233);
+subplot(232);
 plot(xvec,pvec0*4,'k*-','LineWidth',3.0);
 hold on;
 plot(xvec,pvec1*4,'k*--','LineWidth',3.0);
