@@ -4,9 +4,9 @@ damp = 1.0;
 
 bet = 0.9925;
 kap = 0.01;
-phi = 10.0;
-phi = 100.0;
-phi = 200.0;
+% phi = 10.0;
+% phi = 100.0;
+% phi = 200.0;
 phi = 5.0;
 % phi = 2.5;
 rstar = (1/bet-1)*100;
@@ -57,9 +57,9 @@ mmax = 0.0;
 % mmin = -2.0;
 % mmin = -4.0;
 mmin = -6.0;
-mmin = -40.0;
-mmin = -60.0;
-mmin = -4.0;
+% mmin = -40.0;
+% mmin = -60.0;
+% mmin = -4.0;
 % mmin = -2.0;
 mgrid = linspace(mmin,mmax,N)';
 
@@ -101,6 +101,8 @@ while(diff>crit)
             x = fzero(@rw_eqm,mpast,options,mpast,mgrid,epvec,rstar,phi,zeta);
 %             x = golden('rw_eqm',mmin,mmax,1e-10,mpast,mgrid,epvec,rstar,phi,zeta);
             m0 = x;
+%             m0
+%             pause
             
             ey0 = intf1(mgrid,eyvec,m0);
             ep0 = intf1(mgrid,epvec,m0);
@@ -118,7 +120,7 @@ while(diff>crit)
             pmat1(im,is) = p0;
             imat1(im,is) = i0; %i0;
             mmat1(im,is) = m0;
-            nmat1(im,is) = is0+mpast; %i0;
+            nmat1(im,is) = is0; %i0;
             
         end
 
