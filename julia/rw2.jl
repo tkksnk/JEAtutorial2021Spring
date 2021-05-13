@@ -2,26 +2,58 @@
 using NLsolve
 using Interpolations
 
-function main()
+# struct Model{TI<:Integer, TF<:AbstractFloat}
+#     rstar::TF   # pH=0のときの、定常状態での名目金利の値
+#     bet::TF     # 割引率
+#     phi::TF     # テイラー係数
+#     kap::TF     # フィリップス曲線の傾き
+#     zeta::TF     # フィリップス曲線の傾き
+#     sH::TF      # 状態Hでの自然利子率の値
+#     sL::TF      # 状態Lでの自然利子率の値
+#     pH::TF      # 危機が起こる確率
+#     pL::TF      # 危機の継続確率
+#     # maxiter::TI # 繰り返し回数の最大値
+#     # tol::TF     # 許容誤差
+# end
 
-    damp = 1.0
+# function main()
+#
+#     damp = 1.0
+#
+#     bet = 0.9925
+#     kap = 0.01
+#     phi = 5.0
+#     rstar = (1.0/bet-1.0)*100
+#     zeta = 1.0
+#
+#     pH = 0.0
+#     pL = 0.8
+#     sH = rstar
+#     sL = rstar-2.5
+#
+#     m = Model(bet,kap,phi,rstar,zeta,sH,sL,pH,pL)
+#     # policy function iteration
+#     Ns = 2
+#     N = 101
+#     mmax = 0.0
+#     mmin = -6.0
+#
+#     ti(m,mmin,mmax,Ns,N,damp)
+#     # ti(bet,kap,phi,rstar,zeta,pH,pL,sH,sL,mmin,mmax,Ns,N,damp)
+#
+# end
 
-    bet = 0.9925
-    kap = 0.01
-    phi = 5.0
-    rstar = (1/bet-1)*100
-    zeta = 1.0
+function ti(m,mmin,mmax,Ns,N,damp)
 
-    pH = 0.0
-    pL = 0.8
-    sH = rstar
-    sL = rstar-2.5
-
-    # policy function iteration
-    Ns = 2
-    N = 101
-    mmax = 0.0
-    mmin = -6.0
+    bet = m.bet
+    kap = m.kap
+    phi = m.phi
+    rstar = m.rstar
+    zeta = m.zeta
+    pH = m.pH
+    pL = m.pL
+    sH = m.sH
+    sL = m.sL
 
     Gs = [sH; sL]
     Ps = [1.0-pH pH; 1.0-pL pL]
@@ -60,11 +92,11 @@ function main()
     mmat1 = copy(mmat0)
     nmat1 = copy(nmat0)
 
-    crit = 1e-4
+    # crit = 1e-4
     diff = 1e+4
     iter = 0
 
-    while (diff>crit)
+    while (diff>tol && iter<maxiter)
 
         @inbounds for is in 1:Ns
 
@@ -127,6 +159,8 @@ function main()
 
     end
 
+    return ymat0, pmat0, imat0, mmat0, nmat0
+
 end
 
 function rw_eqm2(x,mpast,epintp,rstar,phi,zeta)
@@ -146,4 +180,4 @@ function rw_eqm2(x,mpast,epintp,rstar,phi,zeta)
 
 end
 
-main()
+# main()
