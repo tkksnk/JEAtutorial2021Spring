@@ -6,10 +6,10 @@
 
 スライドは以下のBinderのリンクをクリック
 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/tkksnk/JEAtutorial2021Spring/HEAD?filepath=JEAtutorial2021Spring.ipynb)
+
 コードは`julia`フォルダを参照
 
 - TwostateNK.ipynb: 2状態・準線形モデル
 - TwostateCD.ipynb: 最適金融政策
 - TwostateRW.ipynb: フォワードガイダンス・ルール
-
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/tkksnk/JEAtutorial2021Spring/HEAD?filepath=JEAtutorial2021Spring.ipynb)
