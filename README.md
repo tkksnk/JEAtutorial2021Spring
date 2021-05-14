@@ -8,8 +8,8 @@
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/tkksnk/JEAtutorial2021Spring/HEAD?filepath=JEAtutorial2021Spring.ipynb)
 
-コードは`julia`フォルダを参照
+コード（Julia+Jupyter Notebook）は`julia`フォルダを参照してください
 
 - TwostateNK.ipynb: 2状態・準線形モデル
-- TwostateCD.ipynb: 最適金融政策
+- TwostateCD.ipynb: 最適金融政策（裁量＋コミットメント）
 - TwostateRW.ipynb: フォワードガイダンス・ルール
