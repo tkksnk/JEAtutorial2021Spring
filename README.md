@@ -2,7 +2,7 @@
 
 <b>応用１：ニューケインジアン・モデルの新展開</b>
 
-スライドは以下のBinderのリンクをクリック
+スライドはこちら（表示までに時間がかかります）
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/tkksnk/JEAtutorial2021Spring/HEAD?filepath=JEAtutorial2021Spring.ipynb)
 
