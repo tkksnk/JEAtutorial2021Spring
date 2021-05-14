@@ -13,3 +13,5 @@
 - TwostateNK.ipynb: 2状態・準線形モデル
 - TwostateCD.ipynb: 最適金融政策（裁量＋コミットメント）
 - TwostateRW.ipynb: フォワードガイダンス・ルール
+
+The source code is licensed MIT, see LICENSE.
